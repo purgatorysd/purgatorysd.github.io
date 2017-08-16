@@ -1,2 +1,0 @@
-# purgatorysd.github.io
-heyyy
