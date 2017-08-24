@@ -1,0 +1,740 @@
+﻿<!DOCTYPE html>
+<html lang="en-ca"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <title>Purgatory Case Files</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://dl.dropbox.com/s/3scz3vs3s1m5oqs/css.css">
+    <link href="https://dl.dropbox.com/s/dmtp63tevdjdug8/main.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script src="https://dl.dropbox.com/s/i8x2a92igj37qd4/global.js"></script>
+
+        <link href="https://dl.dropbox.com/s/wzw10oqq004sjvw/space-header.css" rel="stylesheet">
+
+
+    <script src="https://dl.dropbox.com/s/oewofonnzj0p2xp/handlebars-v4.js"></script>
+
+
+    
+
+</head>
+<body>
+    <noscript>
+        <div id="nojs">
+            <p>Site is best viewed when javascript is enabled.</p>
+            <p>
+                Here are the <a href="http://www.enable-javascript.com/" target="_blank">
+                    instructions how to enable JavaScript in your web browser
+                </a>.
+            </p>
+        </div>
+    </noscript>
+
+    
+
+    
+
+<div class="sticky-wrapper">
+<div class="nav-bar--primary">
+<div class="nav-bar__global"></div>
+<div class="nav-bar__globals__wrapper">
+<div class="show-nav-wrapper"></div>
+</div>
+<div class="nav-bar__show time"><span></span></div>
+</div>
+</div>
+
+<script>
+    var loggedIn = true;
+    var showWelcome = false;
+</script>
+
+<script src="https://dl.dropbox.com/s/pgcgumu048ahlrq/module_005.js"></script>
+<script src="https://dl.dropbox.com/s/e9jwziapwplt693/scroller.js"></script>
+<script src="https://dl.dropbox.com/s/3r8rgyd4kubvuhm/module_008.js"></script>
+<script src="https://dl.dropbox.com/s/hpdokmtdrz70cqr/module_003.js"></script>
+<script src="https://dl.dropbox.com/s/4gszjuszqshef3f/module_002.js"></script>
+<script src="https://dl.dropbox.com/s/c9verosvxayyu4i/module_010.js"></script>
+<script src="https://dl.dropbox.com/s/viozhdi68gc71sb/module_007.js"></script>
+<script src="https://dl.dropbox.com/s/fuft11sjl59ad1s/module_006.js"></script>
+<script src="https://dl.dropbox.com/s/08ec0ysbsauj81x/module.js"></script>
+<script src="https://dl.dropbox.com/s/oixjwo14tf8wp3q/module_011.js"></script>
+<script src="https://dl.dropbox.com/s/rfqw13i2i4x2ps8/module_012.js"></script>
+<script src="https://dl.dropbox.com/s/vndyqjed0s8md1d/module_004.js"></script>
+<script src="https://dl.dropbox.com/s/faprpajf1h8yq8q/module_009.js"></script>
+
+
+<main>
+    
+    <section class="desktop">
+        <header>
+            <strong><img src="http://i.imgur.com/ZZHD6i6.png" alt="USER LOGGED IN: OFFICER NICOLE HAUGHT // ACCESS GRANTED"> <span>USER LOGGED IN: OFFICER NICOLE HAUGHT // ACCESS GRANTED</span></strong>
+            <div>
+                <span class="signal mobile">P-Mobile</span>
+                <span class="bluetooth"></span>
+                <span class="wifi"></span>
+                <span class="battery"></span>
+                <span class="alarm"></span>
+                <time datetime="2017-8-14"><span>Mon Aug 14 <span class="mobile">2017</span></span> <span>7:22 pm</span></time>
+            </div>
+        </header>
+        <div id="icons">
+            <div class="main">
+                <div>
+                    <span>
+                            <a tabindex="-1" data-lightbox="contacts">Contacts</a>
+                            <a tabindex="-1" id="photosModuleIcon" data-lightbox="photos">Photos</a>
+                            <a tabindex="-1" id="messengerModuleIcon" data-lightbox="messenger">Messenger</a>
+                            <a tabindex="-1" id="videosModuleIcon" data-lightbox="videos">Videos</a>
+                            <a tabindex="0"  class="indicator" id="emailModuleIcon" data-lightbox="email">Email</a>
+                            <a tabindex="-1" id="informationRequestsModuleIcon" data-lightbox="information">Information Request</a>
+                            <a tabindex="-1" id="voicemailsModuleIcon" data-lightbox="phone">Phone</a>
+                            <a tabindex="-1" id="notesModuleIcon" data-lightbox="notes">Notes</a>
+                    </span>
+                    <h1>Purgatory Sheriff Department</h1>
+                </div>
+                <footer><span>*** Notice: This is a fan made website</span> - <span>it is not a part of the official Wynonna Earp canon ***</span></footer>
+            </div>
+            <div class="side">
+                <a tabindex="0" id="caselogModuleIcon" data-lightbox="caselog">Case Logs</a>
+                    <a tabindex="0" id="tasksModuleIcon" data-lightbox="tasks">TASKS</a>
+            </div>
+        </div>
+        <div id="moduleTemplates">
+            <div id="modal">
+                <a tabindex="0" class="close" title="Close"></a>
+                <section class="hide" id="photosModule">
+    <header>
+        <h2 id="photosModuleTitle">Photos</h2>
+    </header>
+
+    <article class="scrollWrapper">
+        <span class="scroller"></span>
+        <ul class="scrollContent playList" id="photoPlayList"></ul>
+        <script id="templatePhotoList" type="text/x-handlebars-template">
+            {{#each photos}}
+            <li tabindex="0">
+                <img data-index="{{@index}}" src="{{ImageURL}}" alt="{{Title}}" />
+            </li>
+            {{/each}}
+        </script>
+
+        <div id="photoDetails"></div>
+        <script id="templatePhotoDetails" type="text/x-handlebars-template">
+            <figure><img src="{{ImageURL}}" alt="{{Title}}" /></figure>
+            <h3>{{Title}}</h3>
+            <p>{{Description}}</p>
+        </script>
+    </article>
+
+    <footer>
+        <a class="button back">Back</a>
+    </footer>
+</section>
+
+
+
+
+                <section class="hide" id="videosModule">
+    <header>
+        <h2 id="videosModuleTitle">Videos</h2>
+    </header>
+
+    <article class="scrollWrapper">
+        <span class="scroller"></span>
+        <ul class="scrollContent playList" id="videoPlayList"></ul>
+        <script id="templateVideoList" type="text/x-handlebars-template">
+            {{#each videos}}
+            <li>
+                
+                <img tabindex="0" data-index="{{@index}}" src="{{PreviewImageURL}}" />
+            </li>
+            {{/each}}
+        </script>
+
+        <div class="scrollContent" id="videoDetails"></div>
+        <script id="templateVideoDetails" type="text/x-handlebars-template">
+            <video controls poster="{{PreviewImageURL}}" src="{{VideoURL}}" controlsList="nodownload"></video>
+            <div>
+                <h3>{{Title}}</h3>
+                <p>{{Description}}</p>
+            </div>
+        </script>
+    </article>
+
+    <footer>
+        <a class="button back">Back</a>
+    </footer>
+</section>
+
+                <section class="hide" id="voicemailsModule">
+    <header>
+        
+        <h2 id="voicemailsModuleTitle">Phone</h2>
+    </header>
+
+    <article>
+        <ul id="voicemailList"></ul>
+        <script id="templateVoicemailList" type="text/x-handlebars-template">
+            {{#each voicemails}}
+            <li>
+                <img src="{{FromImageURL}}" />
+                <div>
+                    <h3>{{FromName}}</h3>
+                    <audio controls src="{{AudioURL}}" controlsList="nodownload"></audio>
+                </div>
+            </li>
+            {{/each}}
+        </script>
+    </article>
+</section>
+
+                <section class="hide" id="emailModule">
+    <header>
+        <h2 id="emailModuleTitle">Email</h2>
+    </header>
+
+    <article>
+        <div>
+            <ul id="emailList"></ul>
+            <script id="templateEmailList" type="text/x-handlebars-template">
+                {{#each emails}}
+                <li tabindex="0" data-index="{{@index}}">
+                    <div><strong></strong> <span>{{To}}</span></div>
+                    <div><strong>From:</strong> <span>{{From}}</span></div>
+                    <div><strong>Subject:</strong> <span>{{Subject}}</span></div>
+                </li>
+                {{/each}}
+            </script>
+        </div>
+        <div>
+            <div id="emailDetails"></div>
+            <script id="templateEmailDetails" type="text/x-handlebars-template">
+                <header>
+                    <div><strong></strong> <span>{{To}}</span></div>
+                    <div><strong>From:</strong> <span>{{From}}</span></div>
+                    <div><strong>Subject:</strong> <span>{{Subject}}</span></div>
+                </header>
+                <article class="scrollWrapper">
+                    <span class="scroller"></span>
+                    <div class="scrollContent">
+                        <pre>
+                        {{{Message}}}
+                        </pre>
+                    </div>
+                </article>
+                {{#if AttachmentURL}}
+                <aside id="emailAttachment">
+                    <a href="{{AttachmentURL}}" target="_blank">{{AttachmentTitle}}</a>
+                </aside>
+                {{/if}}
+            </script>
+            <footer>
+                <a class="button back">Back</a>
+            </footer>
+        </div>
+    </article>
+</section>
+
+
+                <section class="hide" id="messengerModule">
+    <header>
+        <h2>Messaging</h2>
+    </header>
+
+    <article>
+
+        <ul id="contactList">
+            
+        </ul>
+        <script id="templateMessengerContact" type="text/x-handlebars-template">
+            {{#each contacts}}
+            <li data-index="{{@index}}" tabindex="0">
+                <img src="{{ContactPictureSrc}}" />
+                <span>{{ContactFullName}}</span>
+            </li>
+            {{/each}}
+        </script>
+
+        <section class="messageBox">
+            <div id="messengerBox">
+                
+            </div>
+            <div>
+                <a class="button back">Back</a>
+            </div>
+        </section>
+        <script id="templateMessengerConversation" type="text/x-handlebars-template">
+            <header>
+                Chatting with: {{ContactName}}
+            </header>
+
+            <div class="scrollWrapper">
+                <span class="scroller"></span>
+                <ul class="scrollContent" data-animate="{{IsActiveConversation}}">
+                    {{#each Messages}}
+                    <li data-hide="{{../IsActiveConversation}}" data-interval="{{TimeInterval}}">
+                        <span>
+                            {{#if IsOfficerHaught}}
+                            NH
+                            {{else}}
+                            {{../ContactInitials}}
+                            {{/if}}
+                        </span>
+                        <div>
+                            {{Content}}
+                        </div>
+                    </li>
+                    {{/each}}
+                </ul>
+            </div>
+            <footer>
+                <span>Text</span>
+                <span>Send</span>
+            </footer>
+        </script>
+    </article>
+</section>
+                <section class="hide" id="informationRequestModule">
+    <header>
+        <h2 id="informationModuleTitle">Information Requests</h2>
+    </header>
+
+    <article>
+        <table id="infoTable">
+            <thead>
+                <tr>
+                    <th>REQUEST DATE</th>
+                    <th>REQUESTED ITEMS</th>
+                    <th>DESCRIPTION</th>
+                    <th>REQUESTING OFFICER</th>
+                    <th>STATUS</th>
+                    <th>LAST UPDATED</th>
+                    <th>UPDATING OFFICER</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody id="informationRequestsTable">
+                
+            </tbody>
+        </table>
+        <script id="templateInformationRequest" type="text/x-handlebars-template">
+            {{#each informationRequests}}
+            <tr data-informationrequestID="{{ID}}">
+                <td>{{RequestDate}}</td>
+                <td>{{RequestedItem}}</td>
+                <td>{{Description}}</td>
+                <td>{{RequestingOfficer}}</td>
+                <td>{{Status}}</td>
+                <td>{{LastUpdated}}</td>
+                <td>{{UpdatingOfficer}}</td>
+                <td>
+                    {{#if IsOpenable}}
+                  
+                      {{#if IsLink}}
+                        <a href="{{Resource.Link}}" target="_blank">OPEN</a>
+                      {{else}}
+                        <a tabindex="0" data-resourcetype="{{ResourceType}}">OPEN</a>  
+                      {{/if}}
+
+                    {{/if}}
+                </td>
+            </tr>
+            {{/each}}
+        </script>
+    </article>
+</section>
+                <section class="hide" id="dispatchAlertModule">
+    <header>
+        <h2>Dispatch Alert</h2>
+    </header>
+
+    <article>
+        <div id="dispatchAlert"></div>
+        <script id="templateDispatchAlert" type="text/x-handlebars-template">
+            <h3>
+                {{Title}}
+            </h3>
+            <div>
+                {{Content}}
+            </div>
+            <footer>
+                <img src="http://www.purgatorysd.com/Content/Images/graphics/audioGraph.svg" alt="" />
+                <hr />
+                <audio autoplay controls src="{{AudioURL}}" controlsList="nodownload"></audio>
+            </footer>
+        </script>
+    </article>
+</section>
+
+                <section class="hide" id="notesModule">
+    <header>
+        <h2 id="notesModuleTitle">Notes</h2>
+    </header>
+
+    <article class="scrollWrapper">
+        <span class="scroller"></span>
+        <ul class="scrollContent" id="noteList">
+            <li>
+                <h3>Note to Self in Hospital</h3>
+                
+                    
+                <audio controls="controls" src="http://www.purgatorysd.com/media/1110/21098.mp3" controlslist="nodownload"></audio>
+            </li>
+        </ul>
+        <script id="templateNoteList" type="text/x-handlebars-template">
+            {{#each notes}}
+            <li>
+                <h3>{{Title}}</h3>
+                {{{Content}}}
+                    
+                {{#if Audio}}
+                <audio controls src="{{AssetURL}}" controlsList="nodownload"></audio>
+                {{else if PDF}}
+                <a class="pdf" href="{{AssetURL}}" target="_blank">{{AssetName}}</a>
+                {{/if}}
+            </li>
+            {{/each}}
+        </script>
+    </article>
+</section>
+
+            </div>
+        </div>
+        <div id="caselog" class="panel">
+            <section id="caselogModule">
+    <a tabindex="0" class="close" title="Close"></a>
+    <h2 id="caselogModuleTitle">Case Log</h2>
+    <article>
+        <div id="calendar">
+    <h3>Select a date</h3>
+    <nav>
+        <a class="prevBtn" tabindex="0" title="prev"></a>
+        <a class="nextBtn" tabindex="0" title="next"></a>
+    </nav>
+    <ul id="calendarList">
+        <li style="margin-left: -200%;">
+            <table data-year="2017" data-month="5">
+            <caption>October 2017</caption>
+                <thead id="weekdays">
+                    <tr>
+                        <th>S</th>
+                        <th>M</th>
+                        <th>T</th>
+                        <th>W</th>
+                        <th>T</th>
+                        <th>F</th>
+                        <th>S</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="otherMonth">28</td>
+                        <td class="otherMonth">29</td>
+                        <td class="otherMonth">30</td>
+                        <td class="otherMonth">31</td>
+                        <td>1</td>
+                        <td>2</td>
+                        <td>3</td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>5</td>
+                        <td>6</td>
+                        <td>7</td>
+                        <td>8</td>
+                        <td>9</td>
+                        <td>10</td>
+                    </tr>
+                    <tr>
+                        <td>11</td>
+                        <td>12</td>
+                        <td>13</td>
+                        <td>14</td>
+                        <td>15</td>
+                        <td>16</td>
+                        <td>17</td>
+                    </tr>
+                    <tr>
+                        <td>18</td>
+                        <td>19</td>
+                        <td>20</td>
+                        <td>21</td>
+                        <td>22</td>
+                        <td>23</td>
+                        <td>24</td>
+                    </tr>
+                    <tr>
+                        <td>25</td>
+                        <td>26</td>
+                        <td>27</td>
+                        <td>28</td>
+                        <td>29</td>
+                        <td>30</td>
+			<td>31</td>
+                    </tr>
+                </tbody>
+            </table>
+        </li>
+        <li>
+            <table data-year="2017" data-month="6">
+            <caption>September 2017</caption>
+                <thead id="weekdays">
+                    <tr>
+                        <th>S</th>
+                        <th>M</th>
+                        <th>T</th>
+                        <th>W</th>
+                        <th>T</th>
+                        <th>F</th>
+                        <th>S</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="otherMonth">26</td>
+                        <td class="otherMonth">27</td>
+                        <td class="otherMonth">28</td>
+                        <td class="otherMonth">29</td>
+                        <td class="otherMonth">30</td>
+			<td class="otherMonth">31</td>
+                        <td>1</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>3</td>
+                        <td>4</td>
+                        <td>5</td>
+                        <td>6</td>
+                        <td>7</td>
+                        <td>8</td>
+                    </tr>
+                    <tr>
+                        <td>9</td>
+                        <td>10</td>
+                        <td>11</td>
+                        <td>12</td>
+                        <td>13</td>
+                        <td>14</td>
+                        <td>15</td>
+                    </tr>
+                    <tr>
+                        <td>16</td>
+                        <td>17</td>
+                        <td>18</td>
+                        <td>19</td>
+                        <td>20</td>
+                        <td>21</td>
+                        <td>22</td>
+                    </tr>
+                    <tr>
+                        <td>23</td>
+                        <td>24</td>
+                        <td>25</td>
+                        <td>26</td>
+                        <td>27</td>
+                        <td>28</td>
+                        <td>29</td>
+                    </tr>
+                    <tr>
+                        <td>30</td>
+                        <td class="otherMonth">1</td>
+                        <td class="otherMonth">2</td>
+                        <td class="otherMonth">3</td>
+                        <td class="otherMonth">4</td>
+                        <td class="otherMonth">5</td>
+			<td class="otherMonth">6</td>
+                    </tr>
+                </tbody>
+            </table>
+        </li>
+        <li>
+            <table data-year="2017" data-month="7">
+            <caption>August 2017</caption>
+                <thead id="weekdays">
+                    <tr>
+                        <th>S</th>
+                        <th>M</th>
+                        <th>T</th>
+                        <th>W</th>
+                        <th>T</th>
+                        <th>F</th>
+                        <th>S</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="otherMonth">30</td>
+                        <td class="otherMonth">31</td>
+                        <td>1</td>
+                        <td>2</td>
+                        <td>3</td>
+                        <td>4</td>
+                        <td>5</td>
+                    </tr>
+                    <tr>
+                        <td>6</td>
+                        <td>7</td>
+                        <td>8</td>
+                        <td>9</td>
+                        <td>10</td>
+                        <td>11</td>
+                        <td>12</td>
+                    </tr>
+                    <tr>
+                        <td>13</td>
+                        <td>14</td>
+                        <td>15</td>
+                        <td>16</td>
+                        <td>17</td>
+                        <td>18</td>
+                        <td>19</td>
+                    </tr>
+                    <tr>
+                        <td>20</td>
+                        <td>21</td>
+                        <td>22</td>
+                        <td>23</td>
+                        <td>24</td>
+                        <td>25</td>
+                        <td>26</td>
+                    </tr>
+                    <tr>
+                        <td>27</td>
+                        <td>28</td>
+                        <td>29</td>
+                        <td>30</td>
+                        <td>31</td>
+                        <td class="otherMonth">1</td>
+                        <td class="otherMonth">2</td>
+                    </tr>
+                </tbody>
+            </table>
+        </li>
+    </ul>
+    <a id="selectToday" tabindex="0">Select today</a>
+</div>
+<script id="templateCalendar" type="text/x-handlebars-template">
+    <h3>Select a date</h3>
+    <nav>
+        <a class="prevBtn" tabindex="0" title="prev"></a>
+        <a class="nextBtn" tabindex="0" title="next"></a>
+    </nav>
+    <ul id="calendarList">
+        {{#each months}}
+        <li>
+            <table data-year="{{year}}" data-month="{{month}}">
+            <caption>{{monthName}} {{year}}</caption>
+                <thead id="weekdays">
+                    <tr>
+                        {{#each weekdays}}
+                        <th>{{this}}</th>
+                        {{/each}}
+                    </tr>
+                </thead>
+                <tbody>
+                    {{#each datesArray}}
+                    <tr>
+                        {{#each this}}
+                        {{#if otherMonth}}
+                        <td class="otherMonth">{{date}}</td>
+                        {{else}}
+                        <td>{{date}}</td>
+                        {{/if}}
+                        {{/each}}
+                    </tr>
+                    {{/each}}
+                </tbody>
+            </table>
+        </li>
+        {{/each}}
+    </ul>
+    <a id="selectToday" tabindex="0">Select today</a>
+</script>
+
+        <div class="scrollWrapper">
+            <span class="scroller"></span>
+            <ul class="scrollContent" id="caselogList">
+            
+                <!-- PUT UPDATES FOR CALENDER HERE -->
+
+            </ul>
+            <script id="templateCaselogList" type="text/x-handlebars-template">
+                {{#each storyBeats}}
+                <li data-id="{{ID}}" data-index="{{@index}}" data-time="{{DateLiveMS}}">
+                    <h3>{{DateLiveString}}</h3>
+                    <ul>
+                        {{#each Items}}
+                        {{#if this}}
+                        <li class="caselogItem" data-id="{{ID}}" tabindex="0">
+                            <span>{{Title}}</span> <span>[{{Type}}]</span>
+                        </li>
+                        {{/if}}
+                        {{/each}}
+                    </ul>
+                </li>
+                {{/each}}
+            </script>
+        </div>
+    </article>
+</section>
+
+
+
+
+        </div>
+        <div id="tasks" class="panel">
+            <section id="taskModule">
+    <a tabindex="0" class="close" title="Close"></a>
+    <header id="tasksModuleTitle">
+        <h2>Tasks</h2>
+<p><script language="JavaScript">var fhs = document.createElement('script');var fhs_id = "5505682";
+var ref = (''+document.referrer+'');var pn =  window.location;var w_h = window.screen.width + " x " + window.screen.height;
+fhs.src = "//freehostedscripts.net/ocounter.php?site="+fhs_id+"&e1=Online User&e2=Online Users&r="+ref+"&wh="+w_h+"&a=1&pn="+pn+"";
+document.head.appendChild(fhs);document.write("<span id='o_"+fhs_id+"'></span>");
+</script></p>
+<p><script language="JavaScript">var fhsh = document.createElement('script');var fhs_id_h = "3267612";
+fhsh.src = "//freehostedscripts.net/ocount.php?site="+fhs_id_h+"&name=Visits&a=1";
+document.head.appendChild(fhsh);document.write("<span id='h_"+fhs_id_h+"'></span>");
+</script></p>
+    </header>
+    <article>
+        <div class="scrollWrapper">
+            <span class="scroller"></span>
+            <ul class="scrollContent" id="tasksList"></ul>
+            <script id="templateTasks" type="text/x-handlebars-template">
+                {{#each tasks}}
+                <li class="taskItem" data-id="{{ID}}" tabindex="0">
+                    <img src="/media/1156/twitter-128.png" />
+                    <h3>{{{Title}}}</h3>
+                    <div>{{{Text}}}</div>
+                </li>
+                {{/each}}
+            </script>
+        </div>
+    </article>
+</section>
+        </div>
+    </section>
+</main>
+    
+<footer>
+<small>find me on tumblr @wynonna-earp</small>
+</footer>
+    <script>
+        var RTP = RTP || {};
+        RTP.StoryBeat = ({"DispatchAlerts":null,"Emails":[{"ID":1649,"Type":"Email","From":"Jeremy Chetri","Subject":"DNA Test Results","Message":"\u003cp\u003eHi Nicole,\u003c/p\u003e\n\u003cp\u003eI \u003cspan style=\"color: orange;\"\u003ed\u003c/span\u003eecoded the second file and I\u0027ve f\u003cspan style=\"color: orange;\"\u003eo\u003c/span\u003eund 2 sho\u003cspan style=\"color: orange;\"\u003et\u003c/span\u003es of Roosevelt. I \u003cspan style=\"color: orange;\"\u003ec\u003c/span\u003ean\u0027t see what is relevant ab\u003cspan style=\"color: orange;\"\u003eo\u003c/span\u003eut the\u003cspan style=\"color: orange;\"\u003em\u003c/span\u003e.\u003c/p\u003e\n\u003cp\u003e-Jer\u003c/p\u003e","InCaseLog":false,"AttachmentURL":"/combinepdf.pdf","AttachmentTitle":"waverlyresults.pdf", "CascadingItem":null,"IsCascading":false}],"IncidentReports":null,"Photos":[],"Videos":[],"Voicemails":[],"Conversations":[],"InformationRequests":[],"Notes":[],"Tasks":[],"DateLive":"\/Date(1503640698000)\/","DateLiveString":"August 25, 2017","DateLiveMS":1502424000000,"HoursBeforeLive":14,"ID":1947,"InCaseLog":false});
+
+RTP.StoryBeatsInCaseLog = ([{"DispatchAlerts":null,"Emails":[{"ID":1649,"Type":"Email","From":"Jeremy Chetri","Subject":"DNA Test Results","Message":"\u003cp\u003eHi Nicole,\u003c/p\u003e\n\u003cp\u003eI \u003cspan style=\"color: orange;\"\u003ed\u003c/span\u003eecoded the second file and I\u0027ve f\u003cspan style=\"color: orange;\"\u003eo\u003c/span\u003eund 2 sho\u003cspan style=\"color: orange;\"\u003et\u003c/span\u003es of Roosevelt. I \u003cspan style=\"color: orange;\"\u003ec\u003c/span\u003ean\u0027t see what is relevant ab\u003cspan style=\"color: orange;\"\u003eo\u003c/span\u003eut the\u003cspan style=\"color: orange;\"\u003em\u003c/span\u003e.\u003c/p\u003e\n\u003cp\u003e-Jer\u003c/p\u003e","InCaseLog":true,"AttachmentURL":"/combinepdf.pdf","AttachmentTitle":"waverlyresults.pdf","CascadingItem":null,"IsCascading":false}],"IncidentReports":null,"Photos":[],"Videos":[],"Voicemails":[],"Conversations":[],"InformationRequests":[],"Notes":[],"Tasks":[],"DateLive":"\/Date(1503640698000)\/","DateLiveString":"August 25, 2017","DateLiveMS":1502424000000,"HoursBeforeLive":14,"ID":1947,"InCaseLog":true}]);
+
+
+
+        RTP.Globals.NotificationSound = "http://www.purgatorysd.com/media/1174/notification.mp3";
+        RTP.Globals.MessageSound = "http://www.purgatorysd.com/media/1175/newmessage.mp3";
+    </script>
+
+    
+
+
+
+</body></html>
